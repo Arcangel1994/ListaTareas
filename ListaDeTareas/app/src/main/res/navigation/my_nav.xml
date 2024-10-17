@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/my_nav"
+    app:startDestination="@id/listFragment">
+
+    <fragment
+        android:id="@+id/listFragment"
+        android:name="com.example.listadetareas.fragments.list.ListFragment"
+        android:label="@string/listatareas"
+        tools:layout="@layout/fragment_list" >
+        <action
+            android:id="@+id/action_listFragment_to_addFragment"
+            app:destination="@id/addFragment" />
+        <action
+            android:id="@+id/action_listFragment_to_updateFragment"
+            app:destination="@id/updateFragment" />
+        <action
+            android:id="@+id/action_listFragment_to_webFragment"
+            app:destination="@id/webFragment" />
+        <action
+            android:id="@+id/action_listFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
+        <action
+            android:id="@+id/action_listFragment_to_loginActivity"
+            app:destination="@id/loginActivity" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/addFragment"
+        android:name="com.example.listadetareas.fragments.add.AddFragment"
+        android:label="@string/agregar"
+        tools:layout="@layout/fragment_add">
+        <action
+            android:id="@+id/action_addFragment_to_listFragment"
+            app:destination="@id/listFragment"
+            app:popUpToInclusive="true"/>
+    </fragment>
+
+    <fragment
+        android:id="@+id/updateFragment"
+        android:name="com.example.listadetareas.fragments.update.UpdateFragment"
+        android:label="@string/actualizar"
+        tools:layout="@layout/fragment_update">
+        <action
+            android:id="@+id/action_updateFragment_to_listFragment"
+            app:destination="@id/listFragment"
+            app:popUpToInclusive="true"/>
+        <argument
+            android:name="currentItem"
+            app:argType="com.example.listadetareas.data.models.Tarea" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/webFragment"
+        android:name="com.example.listadetareas.fragments.web.WebFragment"
+        android:label="@string/web"
+        tools:layout="@layout/fragment_web">
+        <action
+            android:id="@+id/action_webFragment_to_listFragment"
+            app:destination="@id/listFragment"
+            app:popUpToInclusive="true"/>
+        <action
+            android:id="@+id/action_webFragment_to_detailsFragment"
+            app:destination="@id/detailsFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/detailsFragment"
+        android:name="com.example.listadetareas.fragments.web.details.MovieDetailsFragment"
+        android:label="@string/detalles_de_la_movie"
+        tools:layout="@layout/fragment_movie_details">
+        <action
+            android:id="@+id/action_detailsFragment_to_webFragment"
+            app:destination="@id/listFragment"
+            app:popUpToInclusive="true"/>
+        <argument
+            android:name="movieItem"
+            app:argType="com.example.listadetareas.network.models.MostPopularResult" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.example.listadetareas.fragments.login.LoginFragment"
+        android:label="@string/login"
+        tools:layout="@layout/fragment_login">
+        <action
+            android:id="@+id/action_loginFragment_to_listFragment"
+            app:destination="@id/listFragment"
+            app:popUpToInclusive="true"/>
+    </fragment>
+
+
+    <activity
+        android:id="@+id/loginActivity"
+        android:name="com.example.listadetareas.LoginActivity"
+        android:label="activity_login"
+        tools:layout="@layout/activity_login" />
+
+
+</navigation>
